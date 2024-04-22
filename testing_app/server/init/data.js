@@ -1,8 +1,8 @@
 const data = [
   //chips
   {
-    _id: ObjectId(),
     name: "Lays Potato Chips - India's Magic Masala",
+    barcode: "838914951289",
     description: "Flavorful potato chips with a blend of Indian spices",
     category: "Chips",
     ingredients: [
@@ -17,6 +17,7 @@ const data = [
     ],
     harmful_substances: {
       names: ["Monosodium Glutamate"],
+
       descriptions: [
         "Monosodium glutamate (MSG) is a flavor enhancer commonly added to processed foods. Excessive consumption may cause adverse reactions in some individuals.",
       ],
@@ -34,8 +35,8 @@ const data = [
     ],
   },
   {
-    _id: ObjectId(),
     name: "Kurkure Masala Munch",
+    barcode: "935555854278",
     description: "Crunchy snack with spicy masala flavor",
     category: "Chips",
     ingredients: [
@@ -50,6 +51,7 @@ const data = [
     ],
     harmful_substances: {
       names: ["Edible Vegetable Oil"],
+
       descriptions: [
         "Edible vegetable oil, when consumed in excessive amounts, may contribute to health issues due to its high-fat content.",
       ],
@@ -67,8 +69,8 @@ const data = [
     ],
   },
   {
-    _id: ObjectId(),
     name: "Too Yumm! Noodle Masala Flavour Karare Namkeen",
+    barcode: "970284957219",
     description: "Crunchy and flavorful snack with masala noodle flavor",
     category: "Chips",
     ingredients: [
@@ -115,13 +117,14 @@ const data = [
     ],
   },
   {
-    _id: ObjectId,
     name: "Beyond Snack Kerala Banana Chips",
+    barcode: "501520957278",
     description: "Delicious banana chips from Kerala",
     category: "Chips",
     ingredients: ["Banana", "Coconut Oil", "Salt"],
     harmful_substances: {
       names: [null],
+
       descriptions: ["This product does not contain any harmful substances."],
     },
     nutritional_information: {
@@ -137,8 +140,8 @@ const data = [
     ],
   },
   {
-    _id: ObjectId,
     name: "GoodDiet Multigrain Chips - Sour Cream & Onion",
+    barcode: "218324657214",
     description: "Multigrain chips with sour cream and onion flavor",
     category: "Chips",
     ingredients: [
@@ -150,6 +153,7 @@ const data = [
     ],
     harmful_substances: {
       names: ["Maltodextrin"],
+
       descriptions: [
         "Maltodextrin is a common food additive used as a thickener or filler in processed foods. It is generally considered safe, but consuming large amounts may cause digestive issues in sensitive individuals.",
       ],
@@ -168,8 +172,8 @@ const data = [
   },
   // drinks
   {
-    _id: ObjectId,
     name: "Red Bull",
+    barcode: "425583456262",
     description: "Energy drink with a refreshing taste",
     category: "Beverages",
     ingredients: [
@@ -190,6 +194,7 @@ const data = [
     ],
     harmful_substances: {
       names: ["Caffeine", "Sucrose", "Glucose"],
+
       descriptions: [
         "Caffeine in moderate amounts can provide a temporary energy boost but may cause side effects like increased heart rate and jitteriness in sensitive individuals.",
         "Sucrose and glucose are simple sugars. Excessive consumption can contribute to weight gain and other health issues.",
@@ -208,8 +213,8 @@ const data = [
     ],
   },
   {
-    _id: ObjectId,
     name: "Zero Sugar Pepsi Black",
+    barcode: "558587855258",
     description: "Refreshing cola drink with zero sugar",
     category: "Beverages",
     ingredients: [
@@ -226,6 +231,7 @@ const data = [
     ],
     harmful_substances: {
       names: ["Sucralose", "Acesulfame Potassium"],
+
       descriptions: [
         "Sucralose is a non-nutritive sweetener that may have potential side effects if consumed in large amounts, including digestive issues and metabolic effects.",
         "Acesulfame Potassium is a non-caloric artificial sweetener. While considered safe for consumption, some studies suggest possible health concerns related to long-term use.",
@@ -244,14 +250,15 @@ const data = [
     ],
   },
   {
-    _id: "ObjectId",
     name: "Cold Extracted Juice - Basics Sugarcane",
+    barcode: "354421758226",
     description:
       "Pure and refreshing juice made from cold extracted sugarcane.",
     category: "Beverages",
     ingredients: ["Sugarcane"],
     harmful_substances: {
       names: [null],
+
       descriptions: ["This product does not contain any harmful substances."],
     },
     nutritional_information: {
@@ -267,12 +274,13 @@ const data = [
     ],
   },
   {
-    _id: ObjectId(),
     name: "Storia 100% Tender Coconut Water",
+    barcode: "539350357221",
     category: "Beverages",
     ingredients: ["Tender Coconut Water"],
     harmful_substances: {
       names: [null],
+
       descriptions: [],
     },
     nutritional_information: {
@@ -285,16 +293,18 @@ const data = [
   },
 ];
 
-module.exports = { data: sampleData };
+module.exports = { data: data };
 
 // const dt = {
-//   _id: ObjectId,
+//
 //   name: string,
+
 //   description: string(optional),
 //   category: string,
 //   ingredients: [string], // List of ingredients
 //   harmful_substances: {
 //     names: [string], // List of harmful substance names
+
 //     descriptions: [string], // List of corresponding descriptions
 //   },
 //   nutritional_information: {

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const initData = require("./data.js");
-const AppTest = require("../models/test.js");
+const Product = require("../models/products.js");
 
 // database setup
 const MONGO_URL = "mongodb://127.0.0.1:27017/techvilla";
@@ -16,14 +16,14 @@ async function main() {
 }
 
 const initDB = async () => {
-  await AppTest.deleteMany({});
+  await Product.deleteMany({});
   //   initData.data = initData.data.map((obj) => ({
   //     ...obj,
   //     owner: "659d6b3401be779797baf6e5",
   //     geometry: { type: "Point", coordinates: [80.2349272, 12.7839153] },
   //   }));
-  await AppTest.insertMany(initData.data);
-  console.log("data was initialised with the sampleData in init/data.js");
+  await Product.insertMany(initData.data);
+  console.log("data was initialised with the data in init/data.js");
 };
 
 initDB();
