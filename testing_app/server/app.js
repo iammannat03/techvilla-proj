@@ -35,13 +35,14 @@ app.get("/testDB", async (req, res) => {
   }
 });
 
+// upadating the db with health factor
+
 /** homepage routes */
 
 //categories and carousel images
 app.get("/homepage", async (req, res) => {
   res.json(homepage);
 });
-
 
 // get req for scanning the product barcode -> done
 app.get("/scan", async (req, res) => {
@@ -57,9 +58,8 @@ app.get("/search-products", async (req, res) => {
   try {
     const data = await Product.find({
       name: { $regex: name, $options: "i" },
-
     });
-    res.json(data);
+    res.send("data");
     // res.redirect(`./${result.barcode}`);
     console.log(data);
   } catch (error) {
