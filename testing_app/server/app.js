@@ -9,7 +9,7 @@ const methodOverride = require("method-override");
 const { homepage } = require("./data");
 const Product = require("./models/products.js");
 app.use(express.urlencoded({ extended: true }));
-
+const data = require("./init/data.js");
 // // database setup
 main()
   .then(() => {
@@ -41,6 +41,22 @@ app.get("/testDB", async (req, res) => {
 
 //categories and carousel images
 app.get("/homepage", async (req, res) => {
+  for (let i = 0; i < homepage.categories.length; i++) {
+    let category = homepage.categories[0];
+    let unsortedData = await Product.find({ category });
+  }
+
+  // const sortedProducts = data.map((product) => {
+  //   const sortedHarmfulSubstances = product.harmful_substances.sort((a, b) => {
+  //     return b.names.length - a.names.length;
+  //   });
+
+  //   return { ...product, harmful_substances: sortedHarmfulSubstances };
+  // });
+
+  // res.json(sortedProducts);
+  // console.log(data);
+
   res.json(homepage);
 });
 
@@ -67,17 +83,6 @@ app.get("/search-products", async (req, res) => {
   }
 });
 
-// categories
-app.get("/:category", async (req, res) => {
-  const category = req.params.category;
-  try {
-    const data = await Product.find({ category });
-    res.json(data);
-  } catch (error) {
-    console.log(error);
-  }
-});
-
 app.get("/:barcode", async (req, res) => {
   const { barcode } = req.params;
   try {
@@ -95,16 +100,6 @@ app.get("/homepage/:category", async (req, res) => {
   const category = req.params.category;
   try {
     const data = await Product.find({ category });
-    res.json(data);
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-app.get("/:barcode", async (req, res) => {
-  try {
-    const { barcode } = req.params;
-    const data = await Product.find({ barcode });
     res.json(data);
   } catch (error) {
     console.log(error);
