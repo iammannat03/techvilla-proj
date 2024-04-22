@@ -42,21 +42,22 @@ app.get("/homepage", async (req, res) => {
   res.json(homepage);
 });
 
-// post req for scanning the product barcode
-app.get("/scan", (req, res) => {
+// get req for scanning the product barcode -> done
+app.get("/scan", async (req, res) => {
   let { barcode } = req.query;
-  console.log(barcode);
+  const data = await Product.find({ barcode: barcode });
+  res.json(data);
   // res.redirect(`/${barcode}`);
 });
 
-// search page
+// search page -> done
 app.get("/search-products", async (req, res) => {
-  let { result } = req.query;
+  let { name } = req.query;
   try {
     const data = await Product.find({
-      name: { $regex: result, $options: "i" },
+      name: { $regex: name, $options: "i" },
     });
-    res.send("data");
+    res.json(data);
     // res.redirect(`./${result.barcode}`);
     console.log(data);
   } catch (error) {
@@ -65,7 +66,7 @@ app.get("/search-products", async (req, res) => {
 });
 
 // categories
-app.get("/:category", async (req, res) => {
+app.get("/homepage/:category", async (req, res) => {
   const category = req.params.category;
   try {
     const data = await Product.find({ category });
@@ -76,8 +77,8 @@ app.get("/:category", async (req, res) => {
 });
 
 app.get("/:barcode", async (req, res) => {
-  const { barcode } = req.params;
   try {
+    const { barcode } = req.params;
     const data = await Product.find({ barcode });
     res.json(data);
   } catch (error) {
