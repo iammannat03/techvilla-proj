@@ -839,4 +839,3 @@ module.exports = { data: data };
 //   images: [string](optional), // List of image URLs
 // };
 
-module.exports = products;
