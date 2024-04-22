@@ -49,6 +49,19 @@ app.post("/scan", (req, res) => {
   res.redirect(`/product/${barcode}`);
 });
 
+// search page
+app.post("/search-products", async (req, res) => {
+  let { search } = req.body;
+  try {
+    const data = await Product.find({
+      name: { $regex: search, $options: "i" },
+    });
+    res.json(data);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 // app.listen()
 app.listen("8080", () => {
   console.log("app is listening on port 8080");
