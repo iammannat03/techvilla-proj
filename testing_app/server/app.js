@@ -59,7 +59,7 @@ app.get("/search-products", async (req, res) => {
       name: { $regex: name, $options: "i" },
 
     });
-    res.send("data");
+    res.json(data);
     // res.redirect(`./${result.barcode}`);
     console.log(data);
   } catch (error) {
