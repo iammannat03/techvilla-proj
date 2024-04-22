@@ -10,6 +10,7 @@ const { homepage } = require("./data");
 const Product = require("./models/products.js");
 app.use(express.urlencoded({ extended: true }));
 const data = require("./init/data.js");
+
 // // database setup
 main()
   .then(() => {
@@ -18,7 +19,9 @@ main()
   .catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/techvilla");
+  await mongoose.connect(
+    "mongodb+srv://mannatjaiswal03:gH3ynGrAkyWHco17@cluster0.b2uavjr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+  );
 }
 
 // testing app server
@@ -41,9 +44,26 @@ app.get("/testDB", async (req, res) => {
 
 //categories and carousel images
 app.get("/homepage", async (req, res) => {
+  const initDB = async () => {
+    await Product.deleteMany({});
+    await Product.insertMany(data.data);
+    console.log("data was initialised with the data in init/data.js");
+  };
+
+  initDB();
+
   for (let i = 0; i < homepage.categories.length; i++) {
     let category = homepage.categories[0];
     let unsortedData = await Product.find({ category });
+
+    const sortedData = unsortedData.sort((a, b) => {
+      return (
+        a.harmful_substances.names.length - b.harmful_substances.names.length
+      );
+    });
+
+    const newSortedData = sortedData.map((product) => {});
+    console.log(sortedData);
   }
 
   // const sortedProducts = data.map((product) => {
@@ -75,9 +95,7 @@ app.get("/search-products", async (req, res) => {
     const data = await Product.find({
       name: { $regex: name, $options: "i" },
     });
-    res.send("data");
-    // res.redirect(`./${result.barcode}`);
-    console.log(data);
+    res.json(data);
   } catch (error) {
     console.log(error);
   }
