@@ -43,15 +43,15 @@ app.get("/homepage", async (req, res) => {
 });
 
 // post req for scanning the product barcode
-app.post("/scan", (req, res) => {
-  let { barcode } = req.body;
+app.get("/scan", (req, res) => {
+  let { barcode } = req.query;
   console.log(barcode);
   // res.redirect(`/${barcode}`);
 });
 
 // search page
-app.post("/search-products", async (req, res) => {
-  let { result } = req.body;
+app.get("/search-products", async (req, res) => {
+  let { result } = req.query;
   try {
     const data = await Product.find({
       name: { $regex: result, $options: "i" },
